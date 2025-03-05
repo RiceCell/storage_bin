@@ -1,3 +1,4 @@
+// shortcut converting Earth orbitals to seconds
 #include "space_age.h"
 #include <math.h>
 #define EARTH_SECONDS 31557600
@@ -10,5 +11,22 @@ float age(planet_t planet, int64_t seconds) {
     float age = seconds / planet_earth_seconds;
     return age;
 }
+
+// hamming solution shortcut sm
+#include "hamming.h"
+#include <stdio.h>
+int compute(const char *l, const char *r) {
+  int count = 0;
+  if (!l || !r)
+    return -1;
+  for (; *l != '\0' && *r != '\0'; ++l, ++r) {
+    if (*l != *r)
+        ++count;
+  }
+  if (*l != *r)
+    return -1;
+  return count;
+}
+
 
 
